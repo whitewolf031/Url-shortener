@@ -1,6 +1,6 @@
 import os
 import environ
-from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 root = environ.Path(__file__) - 2
 env = environ.Env()
@@ -27,21 +27,26 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+INSTALLED_APPS += ['corsheaders',]
+
 # services:
 INSTALLED_APPS += [
     'shortener',
+    'api',
+    'user',
 ]
 
 # packages:
 INSTALLED_APPS += [
     'rest_framework',
     'django_filters',
-    # 'drf_spectacular',
+    'drf_spectacular',
     'djoser',
     'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +55,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ['*']
+CSRF_COOKIE_SECURE = False
 
 ROOT_URLCONF = 'config.urls'
 
@@ -90,15 +100,27 @@ DATABASES = {
     },
 }
 
+#-----------------------Rest Framework---------------------------
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.FileUploadParser',
+    ],
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+#----------------------------------------------------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -126,7 +148,15 @@ USE_L10N = True
 USE_TZ = True
 name = "Sarvar"
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
+LANGUAGES = [
+   ('uz', _('Uzbek')),
+   ('en', _('English')),
+   ('ru', _('Russian')),
+]
+
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
@@ -138,26 +168,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #-------------------------------SPECTACULAR---------------------------------
-# SPECTACULAR_SETTINGS = {
-#     'TITLE': 'Your Project API',
-#         'DESCRIPTION': 'Your project description',
-#     'VERSION': '1.0.0',
-#
-#     'SERVE_PERMISSIONS': [
-#         'rest_framework.permissions.IsAuthenticated'],
-#
-#     'SERVE_AUTHENTICATION': [
-#         'rest_framework.authentication.BasicAuthentication'],
-#
-#     'SWAGGER_UI_SETTINGS': {
-#         'DeepLinking': True,
-#         'DisplayOperationId': True,
-#     },
-#
-#     'COMPONENT_SPLIT_REQUEST': True,
-#     'SORT_OPERATIONS': False,
-# }
-#
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+        'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+
+    'SERVE_PERMISSIONS': [
+        'rest_framework.permissions.IsAuthenticated'],
+
+    'SERVE_AUTHENTICATION': [
+        'rest_framework.authentication.BasicAuthentication'],
+
+    'SWAGGER_UI_SETTINGS': {
+        'DeepLinking': True,
+        'DisplayOperationId': True,
+    },
+
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SORT_OPERATIONS': False,
+}
+
 
 #--------------------------------AUTH TOKEN--------------------------------
 DJOSER = {
