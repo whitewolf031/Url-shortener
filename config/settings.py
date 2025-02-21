@@ -1,4 +1,6 @@
 import os
+from datetime import timedelta
+
 import environ
 from django.utils.translation import gettext_lazy as _
 
@@ -19,31 +21,28 @@ BASE_DIR = root()
 # Application definition
 
 INSTALLED_APPS = [
+    # Django default ilovalari
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
 
-INSTALLED_APPS += ['corsheaders',]
+    # Uchinchi tomon kutubxonalari
+    'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
+    'djoser',
 
-# services:
-INSTALLED_APPS += [
+    # O‘z loyihangizdagi ilovalar
     'shortener',
     'api',
     'user',
 ]
 
-# packages:
-INSTALLED_APPS += [
-    'rest_framework',
-    'django_filters',
-    'drf_spectacular',
-    'djoser',
-    'rest_framework.authtoken',
-]
+#----------------------------------------------------------------
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -102,13 +101,13 @@ DATABASES = {
 
 #-----------------------Rest Framework---------------------------
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
 
     'DEFAULT_PARSER_CLASSES': [
@@ -117,8 +116,6 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser',
         'rest_framework.parsers.FileUploadParser',
     ],
-
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 #----------------------------------------------------------------
 
@@ -165,29 +162,6 @@ MEDIA_TEST_ROOT = os.path.join(BASE_DIR, 'media/test/')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-#-------------------------------SPECTACULAR---------------------------------
-SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your Project API',
-        'DESCRIPTION': 'Your project description',
-    'VERSION': '1.0.0',
-
-    'SERVE_PERMISSIONS': [
-        'rest_framework.permissions.IsAuthenticated'],
-
-    'SERVE_AUTHENTICATION': [
-        'rest_framework.authentication.BasicAuthentication'],
-
-    'SWAGGER_UI_SETTINGS': {
-        'DeepLinking': True,
-        'DisplayOperationId': True,
-    },
-
-    'COMPONENT_SPLIT_REQUEST': True,
-    'SORT_OPERATIONS': False,
-}
-
 
 #--------------------------------AUTH TOKEN--------------------------------
 DJOSER = {

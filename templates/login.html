@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/login.css" type="text/css">
+    <!-- SweetAlert2 CSS kutubxonasi -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="dashboard.html" method="POST">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input id="username" type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input id="password" type="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="button" id="login" class="btn-login">Login</button>
+        </form>
+        <a href="registration.html" class="register-link">Don't have an account? Register</a>
+    </div>
+</body>
+</html>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+<script>
+    $('#login').on('click', function (event) {
+    event.preventDefault();
+
+    $.ajax({
+        url: 'http://127.0.0.1:8000/api/login/',
+        type: 'POST',
+        contentType: "application/json",
+        data: JSON.stringify({
+            username: $('#username').val(),
+            password: $('#password').val()
+        }),
+        success: function (response) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Login successfully',
+                icon: 'success',
+                // timer: 2000, // 2 sekunddan keyin o'chadi
+                // showConfirmButton: false
+            }).then(() => {
+                window.location.href = "base.html"; // Sahifani o'zgartirish
+            });
+        },
+        error: function (xhr) {
+            let errorMessage = 'Something went wrong!';
+            if (xhr.responseJSON) {
+                errorMessage = xhr.responseJSON.detail || xhr.responseJSON.error || 'Invalid credentials!';
+            }
+            Swal.fire({
+                title: 'Error!',
+                text: errorMessage,
+                icon: 'error'
+            });
+        }
+    });
+});
+</script>

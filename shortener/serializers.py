@@ -1,13 +1,18 @@
 from rest_framework import serializers
-from .models import Shortenedurl
-from shortener.utils.short_link import generate_short_link  # Import the function
+from .models import ShortenedURL
 
 class ShortenedURLSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Shortenedurl
-        fields = ['id', 'original_link', 'short_link', 'click', 'created_at']
-        read_only_fields = ['short_link', 'created_at']
+        model = ShortenedURL
+        fields = ['short_link', 'original_link', 'clicks', 'status', 'created_at']
+        read_only_fields = ('short_link', 'clicks', 'status', 'created_at')
 
-    def create(self, validated_data):
-        validated_data['short_link'] = generate_short_link()
-        return super().create(validated_data)
+class ShortUrlDetailSerializer(serializers.ModelSerializer):
+    short_link = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ShortenedURL
+        fields = "__all__"
+
+    def get_short_link(self, obj):
+        return f"http://127.0.0.1:8000/api/{obj.short_link}"

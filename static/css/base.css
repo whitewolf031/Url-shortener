@@ -1,0 +1,210 @@
+body {
+    background-image: url('../../static/images/img1.png'); /* Rasmingiz joylashgan joy */
+    background-size: cover; /* Rasmni butun ekranga moslashtirish */
+    background-position: center; /* Rasm markazda bo‘lishi */
+    background-repeat: no-repeat; /* Rasm takrorlanmasligi */
+    weight: 800px;
+    height: 800px; /* Butun ekranni egallash */
+}
+
+/* ---------------------------------header and nav------------------------------ */
+
+.navbar{
+    margin-top: 15px;
+}
+
+.div1{
+    margin-right: 20px;
+}
+
+.logo{
+    margin-left: 20px;
+    font-size: 38px;
+    font-weight: bold;
+    background: linear-gradient(to right, #3366FF, #FF3366);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn1{
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    margin-right: 7px;
+    height: 40px;
+    width: 80px;
+}
+
+.btn2{
+    width: 141px;
+    height: 60;
+    border-radius: 50px;
+    box-shadow: 5px 3px 15px rgb(70, 70, 249);
+}
+
+/* -----------------------------section------------------------------------- */
+
+/* Asosiy div */
+#shortendiv {
+    margin-left: 360px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    background-color: #1E2538; /* Orqa fon */
+    border-radius: 50px; /* Yumuq burmalar */
+    padding: 5px 5px 5px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Chiroyli yengil border */
+    width: 50%;
+    max-width: 600px;
+    position: relative; /* Buttonni yopishtirish uchun kerak */
+}
+
+/* Input qismi */
+.boxinput {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.icon {
+    margin-right: 10px;
+    color: rgba(255, 255, 255, 0.5); /* Ikon rangini ochartirish */
+    font-size: 18px;
+}
+
+#inputshortener {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#inputshortener::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Tugma (Button) */
+.btn_shortener {
+    position: absolute;
+    right: 5px; /* Eng o‘ng burchakka yopishtirish */
+    top: 50%;
+    transform: translateY(-50%); /* Markazga to‘g‘ri kelishi uchun */
+    border-radius: 50px;
+    padding: 10px 25px;
+    background-color: #2962FF; /* Ko‘k tugma */
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn_shortener:hover {
+    background-color: #1E4BC7; /* Hover paytda to‘qroq ko‘k */
+}
+
+/* Text ga berilgan style */
+.textshorten {
+    margin-top: 80px;
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(to right, #3366FF, #FF3366);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#p1{
+    color: white;
+    margin-top: 25px;
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 23.5px;
+    letter-spacing: 0%;
+    text-align: center;
+
+}
+
+/* ----------------------------------footer--------------------------------- */
+
+/* Jadval konteyneri */
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+/* Jadvalning asosiy uslubi */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    background-color: #1E2538;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Jadval sarlavhasi */
+thead {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* URL uchun linklar */
+a {
+    color: #3A86FF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* QR kod va ikonkalar */
+td img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* Status ustuni */
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+}
+
+.active {
+    color: white;
+    margin-top: 5px;
+}
+
+.inactive {
+    color: white;
+    margin-top: 5px;
+}
+
+/* Jadvalda tartiblangan oxirgi ustun */
+th:last-child, td:last-child {
+    text-align: right;
+}
+.h6-register {
+    text-align: center;
+    font-size: 14px;
+    margin: 25px;
+    padding-bottom: 20px;
+}
+span {
+    color: white;
+}

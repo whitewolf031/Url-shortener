@@ -1,0 +1,62 @@
+body {
+    background-color: #131E3A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login-container {
+    background: #1E2538;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: 350px;
+}
+h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+.input-group input {
+    width: 86%;
+    padding: 12px 12px 12px 35px; /* Chap tomonda ikonka uchun joy qo‘shildi */
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 15px;
+    background: #2C354E;
+    color: white;
+}
+.input-group i {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+}
+.btn-login {
+    background-color: #2962FF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+.btn-login:hover {
+    background-color: #1E4BC7;
+}
+.register-link {
+    margin-top: 15px;
+    display: block;
+    color: #3A86FF;
+    text-decoration: none;
+}
+.register-link:hover {
+    text-decoration: underline;
+}

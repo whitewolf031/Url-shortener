@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/base.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Linkly</h1>
+            <div class="div1">
+                <a href="login.html" class="btn btn-dark btn1">Login</a>
+                <a href="registration.html" class="btn btn-primary btn2">Registration</a>
+            </div>
+        </nav>
+    </header>
+    
+    <section>
+        <div class="container text-center mt-5">
+            <h1 class="textshorten">Shorten Your Loooong Links :)</h1>
+            <p id="p1">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
+            
+            <div id="shortendiv">
+                <div class="boxinput">
+                    <span class="icon">🔗</span>
+                    <input id="inputshortener" type="text" placeholder="Enter the link here">
+                </div>
+                <button id="shorten-btn" class="btn_shortener">Shorten Now!</button>
+            </div>
+            
+            <!-- Qisqartirilgan link va QR kod -->
+            <div id="result" class="mt-4" style="display: none;">
+                <p><strong>Short Link:</strong> <a id="short-link" href="#" target="_blank"></a></p>
+                <div id="qr-code"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="table-container">
+            <table id="urlTable">
+                <thead>
+                    <tr>
+                        <th>Short Link</th>
+                        <th>Original Link</th>
+                        <th>QR Code</th>
+                        <th>Clicks</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Backend ma'lumotlari joylanadi -->
+                </tbody>
+            </table>
+        </div>
+        <h6 class="h6-register"><a href="registration.html">Register Now</a> <span>to enjoy Unlimited History</span></h6>
+    </footer>
+</body>
+</html>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#shorten-btn").click(function() {
+            let originalLink = $("#inputshortener").val(); // Foydalanuvchi kiritgan link
+            
+            if (!originalLink) {
+                Swal.fire("Error", "Please enter a URL!", "warning");
+                return;
+            }
+
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/shorten/",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    original_link: originalLink
+                }),
+                success: function(response) {
+                    let shortUrl = response.short_link;
+
+                    // Qisqartirilgan linkni chiqarish
+                    $("#short-link").text(shortUrl).attr("href", shortUrl);
+                    $("#result").show();
+
+                    // QR kodni yangilash
+                    $("#qr-code").html(""); // Eski QR kodni o‘chirish
+                    new QRCode(document.getElementById("qr-code"), {
+                        text: shortUrl,
+                        width: 128,
+                        height: 128
+                    });
+                },
+                error: function(xhr) {
+                    Swal.fire("Error", "Something went wrong: " + xhr.responseText, "error");
+                }
+            });
+        });
+    });
+</script>
