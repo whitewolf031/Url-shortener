@@ -1,0 +1,324 @@
+.navbar {
+    background-image: url('../../static/images/img1.png'); /* Rasmingiz joylashgan joy */
+    background-size: cover; /* Rasmni butun ekranga moslashtirish */
+    background-position: center; /* Rasm markazda bo‘lishi */
+    background-repeat: no-repeat; /* Rasm takrorlanmasligi */
+    weight: auto;
+    height: 170px; /* Butun ekranni egallash */
+}
+.div1{
+    margin-right: 20px;
+}
+
+.logo{
+    margin-left: 20px;
+    font-size: 38px;
+    font-weight: bold;
+    background: linear-gradient(to right, #3366FF, #FF3366);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ----------------------------shortenerplace----------------------------------------- */
+
+#shortendiv {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #1E2538; /* Orqa fon */
+    border-radius: 50px; /* Yumuq burmalar */
+    padding: 5px 5px 5px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Chiroyli yengil border */
+    width: 1000px;
+    position: relative; /* Buttonni yopishtirish uchun kerak */
+}
+
+/* Input qismi */
+.boxinput {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.icon {
+    margin-right: 10px;
+    color: rgba(255, 255, 255, 0.5); /* Ikon rangini ochartirish */
+    font-size: 18px;
+}
+
+#inputshortener {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#inputshortener::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Tugma (Button) */
+.btn_shortener {
+    position: absolute;
+    right: 5px; /* Eng o‘ng burchakka yopishtirish */
+    top: 50%;
+    transform: translateY(-50%); /* Markazga to‘g‘ri kelishi uchun */
+    border-radius: 50px;
+    padding: 10px 25px;
+    background-color: #2962FF; /* Ko‘k tugma */
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn_shortener:hover {
+    background-color: #1E4BC7; /* Hover paytda to‘qroq ko‘k */
+}
+
+/* ------------------------user-info------------------------*/
+.user-name {
+    border: 1px solid white;
+    margin-right: 20px;
+    width: 191px; /* To‘g‘ri kenglik */
+    height: 80px; /* To‘g‘ri balandlik */
+    border-radius: 48px;
+    padding: 10px 20px; /* Muvozanatli padding */
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    background-color: #181E29; /* Agar fon kerak bo‘lsa, o‘zgartiring */
+}
+
+/*----------------------------section---------------------*/
+
+section {
+    width: auto;
+    height: 850px;
+    top: 264px;
+    padding-top: 21px;
+    padding-right: 25.19px;
+    padding-bottom: 21px;
+    padding-left: 25px;
+    background-color: #151A24;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: white;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1000;
+    text-align: center;
+    padding: 10px;
+}
+
+.user-info {
+    width: 220px;
+    height: 40px;
+    background-color: #04236b;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 7px;
+}
+
+.user-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+#logout-btn {
+    background-color: rgb(0, 0, 53);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 5px;
+}
+
+#logout-btn:hover {
+    background-color: rgba(10, 91, 187, 0.7);
+    box-shadow: 0px 0px 10px rgba(10, 91, 187, 0.7)
+}
+
+.nav-item {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+/* ---------------------------------filter--------------------------------- */
+
+.divhistory {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Filter tugmasi */
+.filter-button {
+    background: #007bff; /* Asosiy ko‘k rang */
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Icon va matn orasidagi masofa */
+}
+
+/* Hover effekti */
+.filter-button:hover {
+    background: #0056b3;
+    box-shadow: 0px 0px 10px rgba(10, 91, 187, 0.7);
+    transform: scale(1.05);
+}
+
+/* Icon styling */
+.filter-button i {
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover qilinganda icon o‘zgarishi */
+.filter-button:hover i {
+    transform: rotate(20deg);
+}
+
+/* SweetAlert umumiy stil */
+.swal2-popup {
+    background: #1e1e1e !important; /* To‘q kulrang fon */
+    color: white !important;
+    border-radius: 12px !important;
+    width: 400px !important; /* Kengroq modal */
+    padding: 15px !important;
+}
+
+/* Input va select dizayni */
+.swal2-input, .swal2-select {
+    width: 250px !important;
+    padding: 10px 15px !important;
+    font-size: 16px !important;
+    border: 2px solid #007bff !important;
+    border-radius: 6px !important;
+    background: #262626 !important; /* To‘q fon */
+    color: white !important;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Inputlar orasidagi masofa */
+.swal2-input, .swal2-select {
+    margin-bottom: 10px !important;
+}
+
+.swal2-confirm:hover {
+    background: #218838 !important;
+}
+
+/* Bekor qilish tugmasi */
+.swal2-cancel {
+    background: #dc3545 !important;
+    color: white !important;
+    font-weight: bold !important;
+    border-radius: 6px !important;
+    padding: 10px 18px !important;
+    transition: 0.3s ease-in-out;
+}
+
+.swal2-cancel:hover {
+    background: #c82333 !important;
+}
+
+/* ---------------------------td------------------------------------ */
+/* Table styling */
+#url-table {
+    width: 100%;
+    max-height: 400px; /* Maksimal balandlik */
+    overflow-y: auto; /* Vertical skroll */
+    border: 1px solid #ddd; /* Chegarani chiroyli qilish */
+    border-collapse: separate;
+    border-spacing: 0;
+    background: linear-gradient(to right, #04236b, #0647b8);
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#url-table thead {
+    background: #021a4a;
+    color: #fff;
+}
+
+#url-table th, #url-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#url-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+/* Copy button */
+.copy-btn {
+    background-color: #ff9800;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: #e68900;
+}
+
+/* QR code column */
+.qr-code img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: white;
+    padding: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+td a {
+    display: block;
+    max-width: 300px; /* Maksimal uzunligi */
+    overflow: hidden;
+    text-overflow: ellipsis; /* ... bilan kesish */
+    white-space: nowrap;
+}

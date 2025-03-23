@@ -1,3 +1,4 @@
+<!--{% load i18n %}-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +9,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../static/css/base.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- jQuery kutubxonasi -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <h1 class="logo">Linkly</h1>
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.path }}">
+                <select name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Change Language</button>
+            </form>
             <div class="div1">
-                <a href="login.html" class="btn btn-dark btn1">Login</a>
-                <a href="registration.html" class="btn btn-primary btn2">Registration</a>
-            </div>
+                <a href="login.html" class="btn btn1">Login</a>
+                <a href="registration.html" class="btn btn2">Registration</a>
+            </div>            
         </nav>
     </header>
     
@@ -24,7 +46,7 @@
         <div class="container text-center mt-5">
             <h1 class="textshorten">Shorten Your Loooong Links :)</h1>
             <p id="p1">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
-            
+    
             <div id="shortendiv">
                 <div class="boxinput">
                     <span class="icon">🔗</span>
@@ -32,14 +54,17 @@
                 </div>
                 <button id="shorten-btn" class="btn_shortener">Shorten Now!</button>
             </div>
-            
-            <!-- Qisqartirilgan link va QR kod -->
-            <div id="result" class="mt-4" style="display: none;">
-                <p><strong>Short Link:</strong> <a id="short-link" href="#" target="_blank"></a></p>
-                <div id="qr-code"></div>
-            </div>
+    
+            <div class="url-container">
+                <h2 class="textshortener">Your Shortened URL is Ready!</h2>
+                <div class="short-url-box">
+                    <input type="text" id="short-url" readonly>
+                    <i id="copy-btn" class="fas fa-copy copy-icon"></i>
+                    <span class="copied">Copied!</span>
+                </div>
+            </div>            
         </div>
-    </section>
+    </section>    
 
     <footer>
         <div class="table-container">
@@ -55,55 +80,98 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Backend ma'lumotlari joylanadi -->
+                    <tr>
+                        <td>
+                            <div class="copy-container">
+                                <span class="short-link">https://linkly.com/Bn41aCOlnxj</span>
+                                <i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>
+                                <span class="copied">Copied!</span>
+                            </div>
+                        </td>
+                        <td><a href="https://www.twitter.com/tweets/8erelCoihu/" target="_blank" class="text-light">https://www.twitter.com/tweets/8erelCoihu/</a></td>
+                        <td class="qr-code"><img src="/static/images/image 4.svg" alt="QR"></td>
+                        <td class="td_date">1313</td>
+                        <td><span class="status">active</span></td>
+                        <td class="td_date">Oct - 10-2023</td>
+                    </tr>   
+                    <tr>
+                        <td>
+                            <div class="copy-container">
+                                <span class="short-link">https://linkly.com/Bn41aCOlnxj</span>
+                                <i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>
+                                <span class="copied">Copied!</span>
+                            </div>
+                        </td>
+                        <td><a href="https://www.youtube.com" target="_blank" class="text-light">https://www.youtube.com/watch?v=8J7ZmH0lXuk</a></td>
+                        <td class="qr-code"><img src="/static/images/image 4.svg" alt="QR"></td>
+                        <td class="td_date">4313</td>
+                        <td><span class="statuss">inactive</span></td>
+                        <td class="td_date">Oct - 08-2023</td>
+                    </tr>  
+                    <tr>
+                        <td>
+                            <div class="copy-container">
+                                <span class="short-link">https://linkly.com/Bn41aCOlnxj</span>
+                                <i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>
+                                <span class="copied">Copied!</span>
+                            </div>
+                        </td>
+                        <td><a href="https://www.adventuresinwanderlust.com" target="_blank" class="text-light">https://www.adventuresinwanderlust.com/</a></td>
+                        <td class="qr-code"><img src="/static/images/image 4.svg" alt="QR"></td>
+                        <td class="td_date">1013</td>
+                        <td><span class="status">active</span></td>
+                        <td class="td_date">Oct - 08-2023</td>
+                    </tr>  
+                    <tr>
+                        <td>
+                            <div class="copy-container">
+                                <span class="short-link">https://linkly.com/Bn41aCOlnxj</span>
+                                <i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>
+                                <span class="copied">Copied!</span>
+                            </div>
+                        </td>
+                        <td><a href="https://vimeo.com/625257654" target="_blank" class="text-light">https://vimeo.com/625257654</a></td>
+                        <td class="qr-code"><img src="/static/images/image 4.svg" alt="QR"></td>
+                        <td class="td_date">1313</td>
+                        <td><span class="status">active</span></td>
+                        <td class="td_date">Oct - 01-2023</td>
+                    </tr>  
+                    <tr>
+                        <td>
+                            <div class="copy-container">
+                                <span class="short-link">https://linkly.com/Bn41aCOlnxj</span>
+                                <i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>
+                                <span class="copied">Copied!</span>
+                            </div>
+                        </td>
+                        <td><a href="https://unsplash.com/photos/2KjNwOzFfVQ" target="_blank" class="text-light">https://unsplash.com/photos/2KjNwOzFfVQ</a></td>
+                        <td class="qr-code"><img src="/static/images/image 4.svg" alt="QR"></td>
+                        <td class="td_date">1423</td>
+                        <td><span class="status">active</span></td>
+                        <td class="td_date">Oct - 10-2023</td>
+                    </tr>  
+                    <tr>
+                        <td>
+                            <div class="copy-container">
+                                <span class="short-link">https://linkly.com/Bn41aCOlnxj</span>
+                                <i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>
+                                <span class="copied">Copied!</span>
+                            </div>
+                        </td>
+                        <td><a href="https://www.travelwiththejoneses.com" target="_blank" class="text-light">https://www.travelwiththejoneses.com/</a></td>
+                        <td class="qr-code"><img src="/static/images/image 4.svg" alt="QR"></td>
+                        <td class="td_date">3213</td>
+                        <td><span class="status">active</span></td>
+                        <td class="td_date">Oct - 25-2023</td>
+                    </tr>  
                 </tbody>
             </table>
         </div>
-        <h6 class="h6-register"><a href="registration.html">Register Now</a> <span>to enjoy Unlimited History</span></h6>
+        <h6 class="h6register"><a href="registration.html">Register Now</a> <span>to enjoy Unlimited History</span></h6>
     </footer>
 </body>
 </html>
 
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $("#shorten-btn").click(function() {
-            let originalLink = $("#inputshortener").val(); // Foydalanuvchi kiritgan link
-            
-            if (!originalLink) {
-                Swal.fire("Error", "Please enter a URL!", "warning");
-                return;
-            }
-
-            $.ajax({
-                url: "http://127.0.0.1:8000/api/shorten/",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    original_link: originalLink
-                }),
-                success: function(response) {
-                    let shortUrl = response.short_link;
-
-                    // Qisqartirilgan linkni chiqarish
-                    $("#short-link").text(shortUrl).attr("href", shortUrl);
-                    $("#result").show();
-
-                    // QR kodni yangilash
-                    $("#qr-code").html(""); // Eski QR kodni o‘chirish
-                    new QRCode(document.getElementById("qr-code"), {
-                        text: shortUrl,
-                        width: 128,
-                        height: 128
-                    });
-                },
-                error: function(xhr) {
-                    Swal.fire("Error", "Something went wrong: " + xhr.responseText, "error");
-                }
-            });
-        });
-    });
-</script>
+<script src="../static/js/base.js"></script>

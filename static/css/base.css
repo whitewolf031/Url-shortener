@@ -1,46 +1,82 @@
 body {
-    background-image: url('../../static/images/img1.png'); /* Rasmingiz joylashgan joy */
-    background-size: cover; /* Rasmni butun ekranga moslashtirish */
-    background-position: center; /* Rasm markazda bo‘lishi */
-    background-repeat: no-repeat; /* Rasm takrorlanmasligi */
-    weight: 800px;
-    height: 800px; /* Butun ekranni egallash */
+    margin: 0;
+    padding: 0;
+    background-image: url('../../static/images/img1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    weight: 100%;
+    height: 100%;
 }
 
 /* ---------------------------------header and nav------------------------------ */
 
-.navbar{
-    margin-top: 15px;
+.navbar {
+    padding-top: 25px;
+    width: 100%;
+    height: 110px;
+    background-color: #1E2538;
 }
 
-.div1{
-    margin-right: 20px;
+.div1 {
+    display: flex;
+    gap: 20px;
 }
 
-.logo{
-    margin-left: 20px;
+.btn1, .btn2 {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Login tugmasi - qorong‘i gradient va hover effekti */
+.btn1 {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    color: white;
+    border: 2px solid #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn1:hover {
+    background: linear-gradient(145deg, #2a2a2a, #3a3a3a);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Registration tugmasi - ko‘k gradient va hover effekti */
+.btn2 {
+    background: linear-gradient(145deg, #007bff, #0056b3);
+    color: white;
+    border: 2px solid #0044aa;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+}
+
+.btn2:hover {
+    background: linear-gradient(145deg, #0056b3, #003b8b);
+    box-shadow: 0px 0px 20px rgba(0, 123, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Tugmalar bosilganda animation effekt */
+.btn1:active, .btn2:active {
+    transform: scale(0.95);
+}
+
+.logo {
+    margin-left: 25px;
     font-size: 38px;
     font-weight: bold;
     background: linear-gradient(to right, #3366FF, #FF3366);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.btn1{
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    margin-right: 7px;
-    height: 40px;
-    width: 80px;
-}
-
-.btn2{
-    width: 141px;
-    height: 60;
-    border-radius: 50px;
-    box-shadow: 5px 3px 15px rgb(70, 70, 249);
-}
-
 /* -----------------------------section------------------------------------- */
 
 /* Asosiy div */
@@ -49,13 +85,17 @@ body {
     margin-top: 40px;
     display: flex;
     align-items: center;
-    background-color: #1E2538; /* Orqa fon */
-    border-radius: 50px; /* Yumuq burmalar */
+    background-color: #1E2538;
+    /* Orqa fon */
+    border-radius: 50px;
+    /* Yumuq burmalar */
     padding: 5px 5px 5px 15px;
-    border: 2px solid rgba(255, 255, 255, 0.2); /* Chiroyli yengil border */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    /* Chiroyli yengil border */
     width: 50%;
     max-width: 600px;
-    position: relative; /* Buttonni yopishtirish uchun kerak */
+    position: relative;
+    /* Buttonni yopishtirish uchun kerak */
 }
 
 /* Input qismi */
@@ -67,7 +107,8 @@ body {
 
 .icon {
     margin-right: 10px;
-    color: rgba(255, 255, 255, 0.5); /* Ikon rangini ochartirish */
+    color: rgba(255, 255, 255, 0.5);
+    /* Ikon rangini ochartirish */
     font-size: 18px;
 }
 
@@ -88,12 +129,15 @@ body {
 /* Tugma (Button) */
 .btn_shortener {
     position: absolute;
-    right: 5px; /* Eng o‘ng burchakka yopishtirish */
+    right: 5px;
+    /* Eng o‘ng burchakka yopishtirish */
     top: 50%;
-    transform: translateY(-50%); /* Markazga to‘g‘ri kelishi uchun */
+    transform: translateY(-50%);
+    /* Markazga to‘g‘ri kelishi uchun */
     border-radius: 50px;
     padding: 10px 25px;
-    background-color: #2962FF; /* Ko‘k tugma */
+    background-color: #2962FF;
+    /* Ko‘k tugma */
     color: white;
     border: none;
     font-weight: bold;
@@ -102,7 +146,8 @@ body {
 }
 
 .btn_shortener:hover {
-    background-color: #1E4BC7; /* Hover paytda to‘qroq ko‘k */
+    background-color: #1E4BC7;
+    /* Hover paytda to‘qroq ko‘k */
 }
 
 /* Text ga berilgan style */
@@ -115,7 +160,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-#p1{
+#p1 {
     color: white;
     margin-top: 25px;
     font-family: Inter;
@@ -131,80 +176,206 @@ body {
 
 /* Jadval konteyneri */
 .table-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 70px;
+    margin: 35px auto;
+    margin-bottom: 30px;
+    width: 80%;
 }
-
-/* Jadvalning asosiy uslubi */
 table {
-    width: 90%;
-    border-collapse: collapse;
+    width: 100%;
     background-color: #1E2538;
-    color: white;
     border-radius: 10px;
-    overflow: hidden;
 }
-
-/* Jadval sarlavhasi */
-thead {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 th, td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-/* URL uchun linklar */
-a {
-    color: #3A86FF;
-    text-decoration: none;
+.short-link {
+    color: white;
 }
-
-a:hover {
-    text-decoration: underline;
+th {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
 }
-
-/* QR kod va ikonkalar */
-td img {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 10px;
-}
-
-/* Status ustuni */
 .status {
-    padding: 5px 10px;
+    background-color: #1DB954;
+    color: white;
+    padding: 5px 12px;
     border-radius: 15px;
     font-weight: bold;
-    text-align: center;
     display: inline-block;
 }
-
-.active {
+.statuss {
+    background-color: #1DB954;
     color: white;
-    margin-top: 5px;
+    background-color: #B0901E;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: inline-block;
 }
-
-.inactive {
+.qr-code img {
+    width: 40px;
+    height: 40px;
+}
+.copy-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.copy-icon {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 18px;
+}
+.copy-icon:hover {
     color: white;
-    margin-top: 5px;
 }
-
-/* Jadvalda tartiblangan oxirgi ustun */
-th:last-child, td:last-child {
-    text-align: right;
-}
-.h6-register {
-    text-align: center;
+.copied {
+    color: #1DB954;
     font-size: 14px;
-    margin: 25px;
-    padding-bottom: 20px;
+    display: none;
 }
-span {
+.td_date {
     color: white;
 }
+.h6register {
+    text-align: center;
+}
+/*----------------------------QR--------------------------------*/
+
+/* Modal oynani yashirin holda boshlash */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Ichki rasm */
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* Yopish tugmasi */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ------------------------------confirim page------------------------ */
+
+/* Umumiy konteyner */
+.url-container {
+    background: #161b22;
+    border: 1px solid #8b8b8b;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 700px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Sarlavhani to‘g‘rilash */
+.textshortener {
+    color: #a89cff; /* Moviy-binafsha rang */
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;}
+
+/* URL bloki */
+.url-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0d1117;
+    border: 1px solid #8b8b8b;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Link uchun */
+.url-box a {
+    color: #58a6ff;
+    font-size: 16px;
+    text-decoration: none;
+    flex-grow: 1;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Ikonlarni joylash */
+.url-box .icons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Harakatlanadigan ikonlar */
+.url-box .icons i {
+    color: #58a6ff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.url-box .icons i:hover {
+    color: #1f6feb;
+}
+
+.short-url-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1E2538;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid #1E2538;
+    width: 80%;
+    margin: auto;
+}
+
+.short-url-box input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+    outline: none;
+}
+
+.copy-btn, .share-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.copy-btn img, .share-btn img {
+    width: 20px;
+    height: 20px;
+}
+

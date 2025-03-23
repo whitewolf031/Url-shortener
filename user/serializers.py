@@ -10,7 +10,7 @@ class Registration(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True, required=True)
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name', 'password', 'confirm_password']
+        fields = ['username', 'email', 'first_name', 'first_name', 'password', 'confirm_password']
 
 
     def validate(self, attrs):
@@ -28,8 +28,6 @@ class Registration(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-
-
 
 # Login serializers:
 class LoginSerializer(serializers.Serializer):

@@ -1,0 +1,50 @@
+/* Barcha elementlarni toza boshlash */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body fon va joylashuv */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Profil kartasi */
+.profile-container {
+    text-align: center;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba;
+    width: 300px;
+}
+
+.profile-icon {
+    /* Profil ikonkasini kattalashtirish */
+    font-size: 120px; /* Oldingi 80px o'rniga */
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.UserText {
+    display: flex;
+}
+.text {
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.username {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+.status {
+    margin-top: 20px;
+    margin-left: px;
+}

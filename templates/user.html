@@ -1,0 +1,81 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkly - Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/user.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Linkly</h1>
+            <div id="shortendiv">
+                <div class="boxinput">
+                    <span class="icon">🔗</span>
+                    <input id="inputshortener" type="text" placeholder="Enter the link here">
+                </div>
+                <button id="shorten-btn" class="btn_shortener">Shorten Now!</button>
+            </div>
+            <div class="user-info">
+                <div id="toggle-dropdown" class="dropdown-toggle">
+                    Welcome <b id="user-name">User</b> &#9662;
+                </div>
+                <div id="user-dropdown" class="dropdown-content" style="display: none;">
+                    <div class="user-header">
+                        <p class="user-fullname" id="user-fullname">
+                            <span id="username-display">Loading...</span>
+                        </p>
+                    </div>
+                    <hr>
+                    <button id="profile-btn">profile</button>
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container mt-4">
+            <div class="divhistory">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">History <span id="url-count">0</span></li>
+                </ul>
+                <!-- ----------------------------filter-------------------------------->
+                <button class="btn btn-info" id="filter-button">
+                    <i class="fa fa-filter"></i>
+                </button> 
+            <!-- ---------------------------------------------------------------------->
+            </div>  
+            <table id="url-table" class="table mt-3 table-hover">
+                <thead>
+                    <tr>
+                        <th>Short Link</th>
+                        <th>Original Link</th>
+                        <th>QR Code</th>
+                        <th>Clicks</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="urls-table-body">
+                    <!-- Dynamic data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    </body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="../static/js/user.js"></script>
