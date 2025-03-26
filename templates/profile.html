@@ -9,19 +9,22 @@
 </head>
 <body>
 
-    <div class="profile-container">
-        <i class="fa fa-user-circle profile-icon"></i>
-        <div>
-        <div class="UserText">
-            <h4 class="text">username</h4>
-            <h4 class="username">Loading...</h4>
+    <div class="profile-card">
+        <div class="profile-avatar">U</div>
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <span>Username:</span> <span id="username">User</span>
         </div>
-        <div class="UserText">
-            <h4 class="text">email</h4>
-            <h4 class="status">Loading...</>
+        <div class="profile-info">
+            <span>Email:</span> <span id="email">example@gmail.com</span>
         </div>
+
+        <div class="button-group">
+            <button class="btn edit-btn" id="edit-btn">Edit</button>
         </div>
     </div>
+
+    <script src="/static/js/profile.js"></script>
 
 </body>
 </html>

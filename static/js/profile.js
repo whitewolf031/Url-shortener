@@ -1,27 +1,34 @@
-// $(document).ready(function() {
-//     let token = localStorage.getItem("token");
-//     if (!token) {
-//         alert("Please log in first!");
-//         return;
-//     }
-    
-//     $.ajax({
-//         url: "http://127.0.0.1:8000/api/user/profile/",
-//         type: "GET",
-//         headers: { "Authorization": "Token " + token },
-//         success: function(response) {
-//             $("#username").text(response.username);
-//             $("#email").text(response.email);
-//             $("#full-name").text(response.first_name + " " + response.last_name);
-//             if (response.profile_picture) {
-//                 $("#profile-pic").attr("src", response.profile_picture);
-//             }
-//         },
-//         error: function() {
-//             alert("Failed to load profile data.");
-//         }
-//     });
-// });
+// --------------------------------------languange-------------------------------------
+$(document).ready(function () {
+    function changeLanguage(lang) {
+        $.getJSON(`./locales/${lang}.json`, function (translations) {
+            $("[data-i18n]").each(function () {
+                let key = $(this).attr("data-i18n");
+
+                // Check if it's an input field (update placeholder)
+                if ($(this).is("input, textarea")) {
+                    $(this).attr("placeholder", translations[key]);
+                } else {
+                    $(this).text(translations[key]);
+                }
+            });
+        });
+    }
+
+    // Detect user's preferred language
+    let userLang = localStorage.getItem("lang") || "en";
+    $("#languageSwitcher").val(userLang);
+    changeLanguage(userLang);
+
+    // Change language on dropdown select
+    $("#languageSwitcher").on("change", function () {
+        let selectedLang = $(this).val();
+        localStorage.setItem("lang", selectedLang);
+        changeLanguage(selectedLang);
+    });
+});
+
+// --------------------------------------languange-------------------------------------
 
 $(document).ready(function () {
     // Profil bosilganda modal oynani ochish

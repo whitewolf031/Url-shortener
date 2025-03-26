@@ -20,43 +20,37 @@
     <header>
         <nav class="navbar">
             <h1 class="logo">Linkly</h1>
-            <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
+            <form method="post">
                 <input name="next" type="hidden" value="{{ request.path }}">
-                <select name="language">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                            {{ language.name_local }} ({{ language.code }})
-                        </option>
-                    {% endfor %}
+                <select id="languageSwitcher">
+                        <option value="en">English</option>
+                        <option value="uz">Uzbek</option>
+                        <option value="ru">Russian</option>
                 </select>
                 <button type="submit">Change Language</button>
             </form>
             <div class="div1">
-                <a href="login.html" class="btn btn1">Login</a>
-                <a href="registration.html" class="btn btn2">Registration</a>
+                <a data-i18n="login" href="login.html" class="btn btn1">Login</a>
+                <a data-i18n="register" href="registration.html" class="btn btn2">Registration</a>
             </div>            
         </nav>
     </header>
     
     <section>
         <div class="container text-center mt-5">
-            <h1 class="textshorten">Shorten Your Loooong Links :)</h1>
-            <p id="p1">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
+            <h1 data-i18n="welcome" class="textshorten">Shorten Your Loooong Links :)</h1>
+            <p data-i18n="welcome_text" id="p1">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
     
             <div id="shortendiv">
                 <div class="boxinput">
                     <span class="icon">🔗</span>
-                    <input id="inputshortener" type="text" placeholder="Enter the link here">
+                    <input data-i18n="input_text" id="inputshortener" type="text" placeholder="Enter the link here">
                 </div>
                 <button id="shorten-btn" class="btn_shortener">Shorten Now!</button>
             </div>
     
             <div class="url-container">
-                <h2 class="textshortener">Your Shortened URL is Ready!</h2>
+                <h2 data-i18n="short-url_title" class="textshortener">Your Shortened URL is Ready!</h2>
                 <div class="short-url-box">
                     <input type="text" id="short-url" readonly>
                     <i id="copy-btn" class="fas fa-copy copy-icon"></i>
@@ -71,12 +65,12 @@
             <table id="urlTable">
                 <thead>
                     <tr>
-                        <th>Short Link</th>
-                        <th>Original Link</th>
-                        <th>QR Code</th>
-                        <th>Clicks</th>
-                        <th>Status</th>
-                        <th>Date</th>
+                        <th data-i18n="data_short">Short Link</th>
+                        <th data-i18n="data_origin">Original Link</th>
+                        <th data-i18n="data_qrcode">QR Code</th>
+                        <th data-i18n="Clicks">Clicks</th>
+                        <th data-i18n="data_status">Status</th>
+                        <th data-i18n="data_date">Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -167,7 +161,7 @@
                 </tbody>
             </table>
         </div>
-        <h6 class="h6register"><a href="registration.html">Register Now</a> <span>to enjoy Unlimited History</span></h6>
+        <h6 class="h6register"><a data-i18n="last_register" href="registration.html">Register Now</a> <span data-i18n="last_register-text">to enjoy Unlimited History</span></h6>
     </footer>
 </body>
 </html>

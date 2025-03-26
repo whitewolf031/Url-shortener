@@ -1,0 +1,18 @@
+{
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "welcome": "Uzun Havolalarni Qisqartiring :)",
+    "welcome_text": "Qisqa — bu tezkor va qulay URL qisqartirish xizmati. Bir marta sinab ko'ring, farqni his qiling!",
+    "input_text": "Bu yerga havolani kiriting",
+    "short-url_title": "Qisqa URL manzilingiz tayyor!",
+    "short-url_text": "Ochish uchun havolani bosing yoki osongina almashish uchun tugmalardan foydalaning!",
+    "datatable_title":"Siz ko'proq havolalar yaratishingiz mumkin. Cheksiz foydalanish uchun hozir ro'yxatdan o'ting",
+    "data_short":"Qisqa havola",
+    "data_origin":"Asl havola",
+    "data_qrcode":"QR kodi",
+    "data_clicks":"Bosishlar",
+    "data_status":"Status",
+    "data_date":"Sana",
+    "last_register": "Hozir roʻyxatdan oʻting",
+    "last_register-text": "Cheksiz tarixdan bahramand bo'lish"
+  }

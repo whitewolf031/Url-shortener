@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 root = environ.Path(__file__) - 2
 env = environ.Env()
 environ.Env.read_env(env.str(root(), '.env'))
+# env.read_env(str(root() / ".env"))
 
 #----------------------------------------------------------------
 
@@ -80,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -112,6 +112,9 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser',
         'rest_framework.parsers.FileUploadParser',
     ],
+
+    # 'DEFAULT_PAGINATION_CLASS': 'shortener.paginations.BasePagination',
+    # 'PAGE_SIZE': 10,
 }
 #----------------------------------------------------------------
 
@@ -133,13 +136,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-name = "Sarvar"
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
@@ -157,9 +161,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_TEST_ROOT = os.path.join(BASE_DIR, 'media/test/')
-
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #--------------------------------AUTH TOKEN--------------------------------
 DJOSER = {
